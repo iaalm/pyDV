@@ -23,15 +23,16 @@ class Application(tk.Frame):
             self.RUN = tk.Button(self, text="RUN", fg="red",command=self.run_callback)
             self.RUN.pack(side="bottom")
 
-        if lable_type:
-            pass
-
         self.QUIT = tk.Button(self, text="QUIT", fg="red",command=master.destroy)
         self.QUIT.pack(side="bottom")
 
     def on_click(self, event):
-        print("click", event.x, event.y)
-        self.data.append((event.x, event.y, self.lable))
+        #print("click", event.x, event.y)
+        if self.lable:
+            self.data.append((event.x, event.y, self.lable))
+        else:
+            self.data.append((event.x, event.y))
+
         self.canvas.create_oval(event.x, event.y,event.x, event.y)
 
     def run_callback(self):
