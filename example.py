@@ -11,8 +11,11 @@ def r(data, canvas):
     ax = np.array([[0,0],[stdvar_d[0],0],[0,stdvar_d[1]]])
     rax = pca.inverse_transform(ax)
     print('pca',rax[1] - rax[0],rax[2] - rax[0])
+
+    canvas.delete("all")
+    for x,y in data:
+        canvas.create_oval(x, y, x, y)
     canvas.create_line(rax[0,0],rax[0,1],rax[1][0],rax[1][1])
     canvas.create_line(rax[0,0],rax[0,1],rax[2][0],rax[2][1])
-
 if __name__ == "__main__":
     App(r)
